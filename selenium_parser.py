@@ -7,14 +7,17 @@ driver.implicitly_wait(3)
 
 driver.get('https://nid.naver.com/nidlogin.login')
 
-driver.find_element_by_name('id').send_keys('jhkwon94')
-driver.find_element_by_name('pw').send_keys('dirchdmltnv1787')
-driver.find_element_by_xpath('//*[@id="frmNIDLogin"]/fieldset/input').click()
+with open('naver_id_password.txt', 'r') as f:
+    info = f.readlines()
 
-driver.get('https://order.pay.naver.com/home')
-html = driver.page_source
-soup = BeautifulSoup(html, 'html.parser')
-notices = soup.select('div.p_inr > div.p_info > a > span')
+    driver.find_element_by_name('id').send_keys(info[0].strip())
+    driver.find_element_by_name('pw').send_keys(info[1].strip())
+    driver.find_element_by_xpath('//*[@id="frmNIDLogin"]/fieldset/input').click()
 
-for n in notices:
-    print(n.text.strip())
+    driver.get('https://order.pay.naver.com/home')
+    html = driver.page_source
+    soup = BeautifulSoup(html, 'html.parser')
+    notices = soup.select('div.p_inr > div.p_info > a > span')
+
+    for n in notices:
+        print(n.text.strip())
