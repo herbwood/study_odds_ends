@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 // 부모 클래스
 //public class Person {
 //	
@@ -93,10 +95,41 @@ public class Student extends Person {
 //		Student student1 = new Student("홍길동", 20, 175, 60, "201311123", 1, 4.5);
 //		Student student2 = new Student("이순신", 23, 189, 80, "234234223", 4, 3.6);
 //		
+//		Student[] = students = new Student[100];
+//		for (int i = 0; i < 100; i++) {
+//			students[i] = new Student("홍길동", 20, 175, 60, i+"", 1, 4.5);
+//			students[i].show();
+//		}
+		
+		Scanner scan = new Scanner(System.in);
+		System.out.print("총 몇 명의 학생이 존재합니까? ");
+		int number = scan.nextInt();
+		Student[] students = new Student[number];
+		for (int i = 0; i < number; i++) {
+			String name;
+			int age;
+			int heigth;
+			int weight;
+			String studentID;
+			int grade;
+			double GPA;
+			
+			System.out.print("학생의 이름을 입력하세요 : ");
+			name = scan.next();
+			
+			students[i] = new Student(name, age, height, weight, studentID, 
+					grade, GPA)
+		}
+		for (int i = 0; i < 100; i++) {
+			students[i] = new Student("홍길동", 20, 175, 60, i+"", 1, 4.5);
+			students[i].show();
+		
+		
 //		student1.show();
 //		student2.show();
 //	}
 //
 //}
+
 
 
